@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { RegisterFormSchema } from "@/lib/rules";
 import { getCollection } from "@/lib/db";
 import { redirect } from "next/navigation";
+import { createSession } from "@/lib/sessions";
 
 export async function register(state, formData) {
   // await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -52,6 +53,7 @@ export async function register(state, formData) {
   });
 
   // Create a session
+  await createSession(results.insertedId.toString());
 
   // Redirect to Dashboard
   redirect("/dashboard");
