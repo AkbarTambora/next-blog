@@ -1,5 +1,6 @@
-import { MongoClient } from 'mongodb';
-import { ServerApiVersion } from 'mongodb';
+import "server-only"; // Ensure this file is only executed on the server side
+
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 if (!process.env.DB_URI) {
     throw new Error('Mongo URI not found!');
